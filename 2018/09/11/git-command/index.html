@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="Mer">
   <!-- Open Graph Data -->
-  <meta property="og:title" content="秋"/>
+  <meta property="og:title" content="git常用命令"/>
   <meta property="og:description" content="Hello,World!" />
   <meta property="og:site_name" content="M的小酒馆"/>
   <meta property="og:type" content="article" />
@@ -43,7 +43,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <div class="page-title with-background-image">
-          <p class="title">秋</p>
+          <p class="title">git常用命令</p>
           <p class="subtitle"></p>
         </div>
         <div class="site-menu with-background-image">
@@ -99,14 +99,14 @@
           
           <!-- Date -->
           <span class="date-time info">On
-            <span class="date">2018-09-08</span>
+            <span class="date">2018-09-11</span>
             <span class="time">22:54:42</span>
           </span>
           
           <!--  Categories  -->
             <span class="categories info">Under 
 
-<a href="/categories/jot/">随笔</a>
+<a href="/categories/学习笔记/">学习笔记</a>
 </span>
           
         </div>
@@ -115,16 +115,30 @@
           <div class="post-tags text-muted">
             Tags: 
 
-<a class="tag" href="/tags/摘抄/">#摘抄</a>
+<a class="tag" href="/tags/git/">#git</a>
 
 
           </div>
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>窗缝里溜进来的凉风让我意识到秋天真的来了，适合想念的季节，也适合酝酿，适合倒数着与你相见的日子，再一点点把空缺补回来。</p>
-<p><img src="/assets/img/jot-autumn-0908.jpg" alt="autumn"></p>
-<a id="more"></a>
+          <h2 id="项目初始化"><a href="#项目初始化" class="headerlink" title="项目初始化"></a>项目初始化</h2><pre><code>git init
+</code></pre><p>创建本地代码仓库</p>
+<hr>
+<h2 id="提交项目版本"><a href="#提交项目版本" class="headerlink" title="提交项目版本"></a>提交项目版本</h2><pre><code>git add .
+</code></pre><p>添加所有文件</p>
+<pre><code>git add &lt;文件名&gt;
+</code></pre><p>添加单个文件</p>
+<pre><code>git commit -m &quot;&lt;消息内容&gt;&quot;
+</code></pre><p>提交某个版本，-m 后面加上提交参数</p>
+<hr>
+<h2 id="绑定仓库和上传文件"><a href="#绑定仓库和上传文件" class="headerlink" title="绑定仓库和上传文件"></a>绑定仓库和上传文件</h2><pre><code>git remote add origin &lt;仓库名称&gt;
+</code></pre><p>关联到远程库</p>
+<pre><code>git pull --rebase origin master
+</code></pre><p>获取远程库与本地同步合并</p>
+<pre><code>git push -u origin master
+</code></pre><p>将文件上传到远程库（未绑定账号需要提供账号密码）<br><a id="more"></a></p>
+<p><strong>THE END.</strong></p>
 
         </div>
       </div>
