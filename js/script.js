@@ -134,4 +134,14 @@
 
     $container.removeClass('mobile-nav-on');
   });
+
+  $container.on('click',function(){
+    $('#mobile-nav').removeClass('on');
+    $('#backdrop').removeClass('mobile-wrap-backdrop')
+  })
+  $(".mer-mobile-nav-btn").click(function(e){
+    $('#mobile-nav').addClass('on');
+    $('#backdrop').addClass('mobile-wrap-backdrop')
+    e.stopPropagation()
+  })
 })(jQuery);
