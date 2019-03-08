@@ -527,6 +527,7 @@ body,
 .mer-nav-container {
   max-width: 1200px;
   margin: auto;
+  position: relative;
 }
 .mer-nav-container:before,
 .mer-nav-container:after {
@@ -608,8 +609,12 @@ body,
 .mer-avatar {
   width: 50px;
   height: 50px;
-  float: right;
-  margin-top: 8px;
+  position: absolute;
+  top: 8px;
+  right: 0;
+}
+.mer-avatar:hover {
+  cursor: pointer;
 }
 .mer-avatar img {
   width: 100%;
@@ -650,7 +655,7 @@ body,
   transition: color 0.2s;
 }
 a.article-title:hover {
-  color: #258fb8;
+  color: #ff6e71;
 }
 .article-meta {
   float: right;
@@ -707,7 +712,7 @@ a.article-title:hover {
   margin: 1.1em 0;
 }
 .article-entry a {
-  color: #258fb8;
+  color: #ff6e71;
   text-decoration: none;
 }
 .article-entry a:hover {
@@ -806,10 +811,10 @@ a.article-title:hover {
   text-decoration: none;
 }
 .article-more-link a:hover {
-  background: #258fb8;
+  background: #ff6e71;
   color: #fff;
   text-decoration: none;
-  text-shadow: 0 1px #1e7293;
+  text-shadow: 0 1px #ff252a;
 }
 .article-footer {
   font-size: 0.85em;
@@ -1072,7 +1077,7 @@ a.article-title:hover {
   margin: 50px 0;
 }
 #comments a {
-  color: #258fb8;
+  color: #ff6e71;
 }
 .archives-wrap {
   margin: 50px 0;
@@ -1128,7 +1133,7 @@ a.article-title:hover {
   line-height: 1.6em;
 }
 .archive-article-title:hover {
-  color: #258fb8;
+  color: #ff6e71;
 }
 .archive-article-footer {
   margin-top: 1em;
@@ -1203,7 +1208,7 @@ a.article-title:hover {
   width: 100%;
 }
 #footer a {
-  color: #258fb8;
+  color: #ff6e71;
   text-decoration: none;
 }
 #footer a:hover {
@@ -1324,7 +1329,7 @@ a.article-title:hover {
   margin-left: 20px;
 }
 .article-entry .gist .gist-file .gist-meta a {
-  color: #258fb8;
+  color: #ff6e71;
   font-weight: normal;
 }
 .article-entry .gist .gist-file .gist-meta a:hover {
@@ -1458,7 +1463,7 @@ pre .javascript .function {
   border-radius: 5px;
 }
 .widget a {
-  color: #258fb8;
+  color: #ff6e71;
   text-decoration: none;
 }
 .widget a:hover {
