@@ -412,6 +412,9 @@ body {
   .container {
     width: auto;
   }
+  .content {
+    width: 100%;
+  }
   .posts {
     width: 98.4%;
   }
