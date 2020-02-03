@@ -11,7 +11,7 @@ h4,
 h5,
 h6 {
   color: #555;
-  margin: 1.2em 0 1em;
+  margin: 1em 0;
   line-height: 1.2;
 }
 h2 {
@@ -36,13 +36,8 @@ a {
   text-decoration: none;
   color: #555;
 }
-figure {
-  margin: 1em;
-}
-pre {
-  font-family: inherit;
-}
 table {
+  width: 100%;
   border-spacing: 1px;
 }
 ul {
@@ -53,6 +48,28 @@ ul li {
 }
 img {
   max-width: 100%;
+}
+figure {
+  margin: 0;
+}
+pre {
+  font-family: inherit;
+  letter-spacing: 0.5px;
+  margin: 0 0 10px;
+  padding: 15px 20px;
+  background-color: #f7f7f7;
+  border: 1px solid #d7d7d7;
+  border-radius: 4px;
+  white-space: pre-wrap;
+}
+blockquote {
+  margin: 0;
+  padding-left: 17px;
+  border-left: 5px solid #ddd;
+  color: #777;
+}
+code {
+  font-family: inherit;
 }
 body {
   margin: 0;
@@ -88,29 +105,32 @@ body {
   content: "\e8ef";
 }
 .highlight {
-  font-size: 13px;
+  font-size: 14px;
   overflow-x: auto;
 }
-.highlight .line {
-  color: #aeb7c2;
-}
-.highlight .line .title {
+.highlight .title {
   color: #eabc58;
 }
-.highlight .line .keyword {
+.highlight .keyword {
   color: #bd6a2e;
 }
-.highlight .line .meta {
+.highlight .meta {
   color: #a7b028;
 }
-.highlight .line .params {
+.highlight .params {
   color: #a4a6ca;
 }
-.highlight .line .comment {
+.highlight .comment {
   color: #777;
 }
-.highlight pre {
-  padding: 1em !important;
+.highlight .gutter {
+  display: none;
+}
+.highlight.sql .keyword {
+  color: #2196f3;
+}
+.highlight.sql .string {
+  color: #e91e63;
 }
 .container {
   width: 1200px;
@@ -275,6 +295,18 @@ body {
 .article-item .article-entry p {
   margin-bottom: 15px;
 }
+.article-item .article-entry .article-excerpt h2 {
+  font-size: 17px;
+}
+.article-item .article-entry .article-excerpt h3 {
+  font-size: 16px;
+}
+.article-item .article-entry .article-excerpt h4 {
+  font-size: 15px;
+}
+.article-item .article-entry .article-excerpt h5 {
+  font-size: 14px;
+}
 .article-item .article-entry .article-more-link {
   padding: 10px;
 }
@@ -349,6 +381,7 @@ body {
 }
 .achive-article .achive-article-title {
   margin-bottom: 12px;
+  font-weight: bold;
 }
 .achive-article .achive-article-title a:hover {
   color: #e59dc4;
@@ -401,12 +434,6 @@ body {
 }
 .article-entry li p {
   margin-bottom: 10px;
-}
-.article-entry pre {
-  margin: 0 0 10px;
-  padding: 15px 20px;
-  background-color: #333;
-  color: #fff;
 }
 @media screen and (max-width: 479px) {
   .container {

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<title>M的小酒馆</title>
+<link rel="icon" href="/favicon.png">
+<link rel="stylesheet" href="/css/style.css">
+
+<script src="/js/lib/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+</head>
+<body>
+	<header class="header">
+	<div class="container">
+		<nav class="nav">
+			
+			<a class="nav-item" href="/">Home</a>
+			
+			<a class="nav-item" href="/archives">Archives</a>
+			
+			<a class="nav-item" href="/about">About</a>
+			
+		</nav>
+		<div class="avatar">
+			<a href="/about"><img src="/assets/img/avatar.png"></a>
+		</div>
+	</div>
+</header>
+	<main class="main">
+		<div class="container"><section class="article-content">
+	<article class="article-post item-container">
+		<header class="article-header">
+			<h1 class="article-title text-center">Oracle常用命令-总结</h1>
+			<p>
+				
+				<time datetime="Mon Feb 03 2020 22:27:44 GMT+0800" class="article-date iconfont icon-date">2020-02-03 22:27:44</time>
+				
+			
+			
+				<a href="/tags/oracle/#more" class="tag iconfont icon-tag">oracle</a>
+			
+			
+			</p>
+		</header>
+		<div class="article-body article-entry"><h2 id="创建表空间"><a href="#创建表空间" class="headerlink" title="创建表空间"></a>创建表空间</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">tablespace</span> 表空间 <span class="keyword">datafile</span> <span class="string">'D:\xxx\xxx.dbf'</span> <span class="keyword">size</span> <span class="number">1024</span>M <span class="keyword">autoextend</span> <span class="keyword">on</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>例</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">tablespace</span> sde <span class="keyword">datafile</span> <span class="string">'D:\Environment\Orcale\oradata\orcl\sde.dbf'</span> <span class="keyword">size</span> <span class="number">1024</span>M <span class="keyword">autoextend</span> <span class="keyword">on</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<a id="more"></a>
+<h2 id="数据导入"><a href="#数据导入" class="headerlink" title="数据导入"></a>数据导入</h2><p>导入dmp文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">impdp 用户名/密码 directory=目录名 dumpfile=dmp文件.DMP logfile=日志名.log full=y ignore=y table_exists_action=replace remap_schema=旧用户名:新用户名 remap_tablespace=旧表空间:新表空间</span><br></pre></td></tr></table></figure>
+<p><strong><em>table_exists_action</em></strong> 参数说明</p>
+<ul>
+<li><strong>skip</strong> 默认</li>
+<li><strong>replace</strong> 先drop表，然后创建表，最后插入数据</li>
+<li><strong>append</strong> 追加</li>
+<li><strong>truncate</strong> 先truncate，然后再插入数据</li>
+</ul>
+<blockquote>
+<p>例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">impdp gyapp/gyapp directory=gy dumpfile=CDDS-20200108.DMP logfile=20200203.log full=y ignore=y remap_schema=cddsbdc:gyapp remap_tablespace=cddsbdc:gy</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>多表空间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">impdp gyapp/gyapp directory=gy dumpfile=CDDS-20200108.DMP logfile=20200203.log full=y ignore=y remap_schema=cddsbdc:gyapp remap_tablespace=(cddsbdc:gy, isys:gy)</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>sde</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">impdp sde/sde directory=gy dumpfile=SDE-20191229.DMP logfile=sde-20200203.log full=y ignore=y table_exists_action=truncate</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="BDLINK"><a href="#BDLINK" class="headerlink" title="BDLINK"></a>BDLINK</h2><p>bdlink创建表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">AS</span> <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> 表名@dblink名;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>例</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> tbprocdef <span class="keyword">AS</span> <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> tbprocdef@localgybdc;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="删除重复数据"><a href="#删除重复数据" class="headerlink" title="删除重复数据"></a>删除重复数据</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> table_name t1 </span><br><span class="line"><span class="keyword">where</span> （t1.col1, t1.col2） <span class="keyword">in</span> (<span class="keyword">select</span> col1, col2 <span class="keyword">from</span> table_name <span class="keyword">group</span> <span class="keyword">by</span> col1, col2 <span class="keyword">having</span> <span class="keyword">count</span>(*) &gt; <span class="number">1</span>)</span><br><span class="line"><span class="keyword">and</span>  t1.rowid <span class="keyword">in</span> (<span class="keyword">select</span> <span class="keyword">min</span>(<span class="keyword">rowid</span>) <span class="keyword">from</span> table_name <span class="keyword">group</span> <span class="keyword">by</span> col1, col2 <span class="keyword">having</span> <span class="keyword">count</span>(*) &gt; <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>例</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> tbprocdef t1 </span><br><span class="line"><span class="keyword">where</span> t1.procdefid <span class="keyword">in</span> (<span class="keyword">select</span> procdefid <span class="keyword">from</span> tbprocdef <span class="keyword">group</span> <span class="keyword">by</span> procdefid <span class="keyword">having</span> <span class="keyword">count</span>(*) &gt; <span class="number">1</span>)</span><br><span class="line"><span class="keyword">and</span>  t1.rowid <span class="keyword">in</span> (<span class="keyword">select</span> <span class="keyword">min</span>(<span class="keyword">rowid</span>) <span class="keyword">from</span> tbprocdef <span class="keyword">group</span> <span class="keyword">by</span> procdefid <span class="keyword">having</span> <span class="keyword">count</span>(*) &gt; <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+</blockquote>
+</div>
+		<footer class="article-footer">
+			<p>--- End ---</p>
+		</footer>
+	</article>
+</section></div>
+	</main>
+	<footer class="footer">
+	<div class="container">
+		<p>
+			<span>Theme By <a href="" target="_blank">Mer</a>.&nbsp;&nbsp;</span>
+			<span>Powered By <a href="https://hexo.io/" target="_blank">Hexo</a>.</span>
+		</p>
+		<p>
+			<span></span>
+		</p>
+	</div>
+</footer>
+</body>
+</html>
