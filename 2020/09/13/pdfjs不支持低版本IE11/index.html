@@ -31,26 +31,22 @@
 		<div class="container"><section class="article-content">
 	<article class="article-post item-container">
 		<header class="article-header">
-			<h1 class="article-title text-center">记-200607</h1>
+			<h1 class="article-title text-center">pdfjs不支持低版本IE11</h1>
 			<p>
 				
-				<time datetime="Sun Jun 07 2020 22:00:54 GMT+0800" class="article-date iconfont icon-date">2020-06-07 22:00:54</time>
+				<time datetime="Sun Sep 13 2020 21:24:00 GMT+0800" class="article-date iconfont icon-date">2020-09-13 21:24:00</time>
 				
 			
 			
-				<a href="/tags/日记/#more" class="tag iconfont icon-tag">日记</a>
+				<a href="/tags/BUG/#more" class="tag iconfont icon-tag">BUG</a>
 			
 			
 			</p>
 		</header>
-		<div class="article-body article-entry"><p>前几天在朋友圈看到的，</p>
-<p>你为什么总是把日子过得一团糟呢？</p>
-<p>正常发挥。</p>
-<p>那接下来有什么打算？</p>
-<p>熬啊！还能怎么样！</p>
+		<div class="article-body article-entry"><p>最近负责公司的系统升级，因决定要支持Chrome浏览器，所以将系统前端中所有的ActiveX的调用方式全换了。升级之后，使用pdfjs作为前端渲染PDF的库。</p>
 <a id="more"></a>
-<p>也不知从何开始，我感觉自己每天随着日子增长的除了年龄，什么都没有了。时间是一辆开往虚空永不停歇的列车，而我只是上面的一个焦虑的旅客，想做点什么却又无能为力。</p>
-<p>去年的我应该不是这样的吧，大概是从看不到公司发展前景的时候开始的，又或者是从对一个喜欢的人彻底死心开始的。</p>
+<p>上线之后发现客户中有部分win7电脑的IE11看不了PDF，打开之后一片空白，控制台报<strong>Uint8ClampedArray未定义</strong>，查看IE版本是11.0.xx，且更新版本中带RTM。</p>
+<p>初步考虑升级IE版本，但IE升级需要升级系统比较麻烦。最后查看<a href="https://github.com/mozilla/pdf.js/releases" target="_blank" rel="noopener">pdfjs版本</a>的更新日志，发现在v1.10.88版本开始使用<strong>Uint8ClampedArray</strong>对象，因此在v1.9.426及之前的版本应该都可以解决问题。为避免其他的坑，我使用了<strong>v1.2.109</strong>，成功解决问题。</p>
 </div>
 		<footer class="article-footer">
 			<p>--- End ---</p>
