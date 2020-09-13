@@ -268,7 +268,7 @@ body {
 /* box-shadow: 0 0.3em 3em rgba(161,177,204,.4); */
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1), 0 1px 5px 0 rgba(0,0,0,0.1);
   background-color: #fff;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 .article-item {
   padding: 20px 25px;
@@ -337,9 +337,6 @@ body {
 .article-tag {
   font-size: 12px;
 }
-#page-nav {
-  text-align: center;
-}
 #page-nav .extend {
   display: block;
   padding: 8px 10px;
@@ -351,19 +348,22 @@ body {
   float: right;
 }
 #page-nav .page-number {
+  text-align: center;
   display: inline-block;
   width: 46px;
   padding: 8px 0;
 }
 #page-nav .page-number.current {
   color: #e59dc4;
+  box-shadow: inset 0 3px 5px rgba(0,0,0,0.125);
+  cursor: default;
 }
 #page-nav a {
   color: #777;
 }
 #page-nav a:hover {
-  background-color: #eaf0eb;
-  color: #333;
+  background-color: #e9405a;
+  color: #fff;
 }
 .achive-item {
   padding: 20px 20px 40px;
